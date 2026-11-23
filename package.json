@@ -1,0 +1,11 @@
+{
+  "name": "chaveiro-bs-landing",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Landing page do Chaveiro BS – Itaquaquecetuba/SP",
+  "scripts": {
+    "build": "node src/build.mjs",
+    "test": "node src/build.mjs && node test/test.cjs",
+    "serve": "node src/build.mjs && npx --yes serve dist"
+  }
+}

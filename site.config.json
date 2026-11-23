@@ -1,0 +1,80 @@
+{
+  "name": "Chaveiro BS",
+  "domain": "",
+  "timezone": "America/Sao_Paulo",
+  "phoneDisplay": "(11) 98371-1957",
+  "whatsappNumber": "5511983711957",
+  "address": {
+    "street": "Estrada Alberto Hinoto, 3310",
+    "neighborhood": "Jd. Odete",
+    "city": "Itaquaquecetuba",
+    "state": "SP"
+  },
+  "neighborhoodsServed": [],
+  "hours": [
+    { "weekday": 1, "label": "Segunda-feira", "open": "09:30", "close": "18:00" },
+    { "weekday": 2, "label": "Terça-feira", "open": "09:30", "close": "18:00" },
+    { "weekday": 3, "label": "Quarta-feira", "open": "09:30", "close": "18:00" },
+    { "weekday": 4, "label": "Quinta-feira", "open": "09:30", "close": "18:00" },
+    { "weekday": 5, "label": "Sexta-feira", "open": "09:30", "close": "18:00" },
+    { "weekday": 6, "label": "Sábado", "open": null, "close": null },
+    { "weekday": 0, "label": "Domingo", "open": null, "close": null }
+  ],
+  "social": {
+    "instagram": "",
+    "facebook": "",
+    "googleBusiness": ""
+  },
+  "reviews": [],
+  "seo": {
+    "title": "Chaveiro em Itaquaquecetuba SP | Chaveiro BS",
+    "description": "Precisa de um chaveiro em Itaquaquecetuba? Conheça os serviços residenciais e automotivos do Chaveiro BS. Entre em contato pelo WhatsApp. Atendimento de segunda a sexta, das 09h30 às 18h."
+  },
+  "messages": {
+    "hero": "Olá! Encontrei o Chaveiro BS pelo site e gostaria de solicitar um atendimento.",
+    "residencial": "Olá! Gostaria de consultar um serviço de chaveiro residencial.",
+    "automotivo": "Olá! Preciso de ajuda com uma chave automotiva.",
+    "outros": "Olá! Gostaria de consultar outros serviços, como afiação de alicates.",
+    "socorro": "Olá! Preciso de um atendimento de socorro. Gostaria de consultar a disponibilidade.",
+    "orcamento": "Olá! Gostaria de solicitar um orçamento.",
+    "final": "Olá! Encontrei o Chaveiro BS pelo site e gostaria de solicitar um atendimento."
+  },
+  "services": [
+    {
+      "id": "residencial",
+      "icon": "home",
+      "title": "Chaveiro residencial",
+      "items": [
+        "Cópias de chaves",
+        "Chaves tetra",
+        "Chaves gorja",
+        "Chaves para portas e portões",
+        "Serviços relacionados a fechaduras",
+        "Abertura de portas, quando aplicável"
+      ]
+    },
+    {
+      "id": "automotivo",
+      "icon": "car",
+      "title": "Chaveiro automotivo",
+      "items": [
+        "Cópias de chaves automotivas",
+        "Chaves automotivas convencionais",
+        "Serviços relacionados a chaves de veículos",
+        "Codificação de chaves (consulte a compatibilidade)",
+        "Socorro automotivo dentro do horário comercial"
+      ],
+      "note": "Consulte a disponibilidade para o seu modelo de veículo."
+    },
+    {
+      "id": "outros",
+      "icon": "tool",
+      "title": "Outros serviços",
+      "items": [
+        "Afiação de alicates",
+        "Serviços relacionados a fechaduras e chaves",
+        "Outros serviços disponíveis mediante consulta"
+      ]
+    }
+  ]
+}
