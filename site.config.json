@@ -12,13 +12,48 @@
   },
   "neighborhoodsServed": [],
   "hours": [
-    { "weekday": 1, "label": "Segunda-feira", "open": "09:30", "close": "18:00" },
-    { "weekday": 2, "label": "Terça-feira", "open": "09:30", "close": "18:00" },
-    { "weekday": 3, "label": "Quarta-feira", "open": "09:30", "close": "18:00" },
-    { "weekday": 4, "label": "Quinta-feira", "open": "09:30", "close": "18:00" },
-    { "weekday": 5, "label": "Sexta-feira", "open": "09:30", "close": "18:00" },
-    { "weekday": 6, "label": "Sábado", "open": null, "close": null },
-    { "weekday": 0, "label": "Domingo", "open": null, "close": null }
+    {
+      "weekday": 1,
+      "label": "Segunda-feira",
+      "open": "09:30",
+      "close": "18:00"
+    },
+    {
+      "weekday": 2,
+      "label": "Terça-feira",
+      "open": "09:30",
+      "close": "18:00"
+    },
+    {
+      "weekday": 3,
+      "label": "Quarta-feira",
+      "open": "09:30",
+      "close": "18:00"
+    },
+    {
+      "weekday": 4,
+      "label": "Quinta-feira",
+      "open": "09:30",
+      "close": "18:00"
+    },
+    {
+      "weekday": 5,
+      "label": "Sexta-feira",
+      "open": "09:30",
+      "close": "18:00"
+    },
+    {
+      "weekday": 6,
+      "label": "Sábado",
+      "open": null,
+      "close": null
+    },
+    {
+      "weekday": 0,
+      "label": "Domingo",
+      "open": null,
+      "close": null
+    }
   ],
   "social": {
     "instagram": "",
@@ -37,7 +72,10 @@
     "outros": "Olá! Gostaria de consultar outros serviços, como afiação de alicates.",
     "socorro": "Olá! Preciso de um atendimento de socorro. Gostaria de consultar a disponibilidade.",
     "orcamento": "Olá! Gostaria de solicitar um orçamento.",
-    "final": "Olá! Encontrei o Chaveiro BS pelo site e gostaria de solicitar um atendimento."
+    "final": "Olá! Encontrei o Chaveiro BS pelo site e gostaria de solicitar um atendimento.",
+    "fechaduras": "Olá! Gostaria de consultar a instalação de fechadura digital ou serviços com miolos e fechaduras.",
+    "controles": "Olá! Gostaria de consultar cópia ou troca de bateria de controle de portão.",
+    "relogios": "Olá! Gostaria de consultar troca de bateria ou ajuste de pulseira de relógio."
   },
   "services": [
     {
@@ -49,7 +87,6 @@
         "Chaves tetra",
         "Chaves gorja",
         "Chaves para portas e portões",
-        "Serviços relacionados a fechaduras",
         "Abertura de portas, quando aplicável"
       ]
     },
@@ -62,9 +99,40 @@
         "Chaves automotivas convencionais",
         "Serviços relacionados a chaves de veículos",
         "Codificação de chaves (consulte a compatibilidade)",
-        "Socorro automotivo dentro do horário comercial"
+        "Socorro automotivo (consulte a disponibilidade)"
       ],
       "note": "Consulte a disponibilidade para o seu modelo de veículo."
+    },
+    {
+      "id": "fechaduras",
+      "icon": "lock",
+      "title": "Fechaduras e miolos",
+      "items": [
+        "Instalação de fechadura digital",
+        "Serviços envolvendo miolos",
+        "Serviços relacionados a fechaduras",
+        "Outros serviços com chaves, miolos e fechaduras"
+      ],
+      "note": "Consulte a disponibilidade para o seu tipo de fechadura."
+    },
+    {
+      "id": "controles",
+      "icon": "remote",
+      "title": "Controles de portão",
+      "items": [
+        "Cópia de controle de portão automático",
+        "Troca de bateria de controles"
+      ],
+      "note": "Consulte a compatibilidade do seu controle."
+    },
+    {
+      "id": "relogios",
+      "icon": "watch",
+      "title": "Relógios",
+      "items": [
+        "Troca de bateria de relógio",
+        "Ajuste de pulseiras de relógio"
+      ]
     },
     {
       "id": "outros",
@@ -72,7 +140,6 @@
       "title": "Outros serviços",
       "items": [
         "Afiação de alicates",
-        "Serviços relacionados a fechaduras e chaves",
         "Outros serviços disponíveis mediante consulta"
       ]
     }

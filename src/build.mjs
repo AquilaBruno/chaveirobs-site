@@ -41,6 +41,8 @@ const paths = {
   check: '<path d="M5 12l5 5 9-10"/>',
   alert: '<path d="M12 3l10 18H2z"/><path d="M12 10v5M12 18h.01"/>',
   doc: '<path d="M7 3h8l4 4v14H7z"/><path d="M15 3v4h4M10 12h6M10 16h6"/>',
+  remote: '<rect x="7" y="2" width="10" height="20" rx="3"/><circle cx="12" cy="8" r="1.5"/><path d="M10 13h4M10 17h4"/>',
+  watch: '<rect x="7" y="7" width="10" height="10" rx="2"/><path d="M9 7l1-4h4l1 4M9 17l1 4h4l1-4M12 10v2l1.5 1"/>',
   camera: '<path d="M4 8h4l2-3h4l2 3h4v11H4z"/><circle cx="12" cy="13" r="3.5"/>'
 };
 const sprite = `<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
@@ -86,10 +88,12 @@ const steps = [
 ];
 
 const faq = [
-  ['O Chaveiro BS atende 24 horas?', `Não. Nosso atendimento funciona de ${hoursShort}.`],
-  ['Vocês fazem atendimento aos sábados e domingos?', 'Não. Não abrimos aos finais de semana.'],
-  ['Vocês realizam socorro de chaveiro?', `Sim, conforme disponibilidade, exclusivamente de ${hoursShort}.`],
+  ['Qual é o horário de atendimento?', `Atendemos de ${hoursShort}.`],
+  ['Vocês fazem socorro fora do horário comercial?', 'Realizamos alguns socorros fora do horário, conforme disponibilidade. Consulte pelo WhatsApp antes de se deslocar.'],
+  ['Vocês realizam socorro de chaveiro?', 'Sim, conforme disponibilidade. Entre em contato pelo WhatsApp e explique a situação.'],
   ['Vocês trabalham com chaves automotivas?', 'Sim. Trabalhamos com serviços automotivos. Consulte a disponibilidade para o seu modelo de veículo.'],
+  ['Vocês instalam fechadura digital?', 'Sim, fazemos a instalação de fechadura digital. Consulte a disponibilidade para o seu tipo de porta e fechadura.'],
+  ['Vocês copiam controle de portão e trocam bateria de relógio?', 'Sim. Fazemos cópia de controle de portão automático, troca de bateria de controles e de relógios e ajuste de pulseiras de relógio. Consulte a compatibilidade do seu modelo.'],
   ['Como posso solicitar um orçamento?', 'Entre em contato pelo WhatsApp e informe qual serviço você precisa.'],
   ['Onde fica o Chaveiro BS?', `Estamos em Itaquaquecetuba – SP, na ${a.street}, ${a.neighborhood}.`]
 ];
@@ -200,7 +204,7 @@ ${sprite}
 
 <section id="servicos" class="bg-soft">
   <div class="container">
-    ${sectionHead('Nossos serviços', 'Chaveiro residencial, automotivo e muito mais', 'Escolha o serviço e consulte direto pelo WhatsApp. Quando há variação por modelo de veículo, fechadura ou tipo de chave, consulte a disponibilidade.')}
+    ${sectionHead('Nossos serviços', 'Chaves, fechaduras, controles e relógios', 'Chaves, fechaduras, controles de portão, relógios e muito mais. Escolha o serviço e consulte direto pelo WhatsApp. Quando há variação por modelo, fechadura ou tipo de chave, consulte a disponibilidade.')}
     <div class="cards">${cfg.services.map(serviceCard).join('')}</div>
   </div>
 </section>
@@ -217,8 +221,8 @@ ${sprite}
     <div class="reveal">
       <span class="eyebrow">Socorro de chaveiro</span>
       <h2>Precisando de socorro com sua chave ou fechadura?</h2>
-      <p class="lead">Entre em contato com o Chaveiro BS pelo WhatsApp e consulte a disponibilidade de atendimento. Realizamos atendimentos de socorro exclusivamente de ${esc(hoursShort)}.</p>
-      <div class="alert" role="note">${icon('alert')}<span>Não atendemos 24 horas e não realizamos socorro aos sábados, domingos ou fora do horário de funcionamento.</span></div>
+      <p class="lead">Entre em contato com o Chaveiro BS pelo WhatsApp e consulte a disponibilidade de atendimento. Nosso horário regular é de ${esc(hoursShort)} e também realizamos alguns socorros fora do horário, conforme disponibilidade.</p>
+      <div class="alert" role="note">${icon('clock')}<span>Socorros fora do horário comercial dependem de disponibilidade. Consulte antes pelo WhatsApp.</span></div>
     </div>
     <div class="socorro-cta reveal">
       ${icon('key', 'icon-big')}
@@ -253,7 +257,7 @@ ${sprite}
       <h2 style="font-size:1.6rem;color:var(--navy)">Horário de atendimento</h2>
       ${status('')}
       <table class="hours"><caption class="sr-only">Horário de funcionamento do Chaveiro BS</caption><tbody>${hoursRows}</tbody></table>
-      <p class="notice">Não somos 24 horas. Os atendimentos de socorro também são realizados somente dentro do horário comercial.</p>
+      <p class="notice">Este é o nosso horário regular. Alguns socorros fora do horário podem ser realizados: consulte a disponibilidade pelo WhatsApp.</p>
     </div>
   </div>
 </section>
@@ -288,7 +292,7 @@ ${reviewsSection}
       <div>
         <h3>Horário</h3>
         <p>${esc(hoursCap)}</p>
-        <p class="foot-note">Sem atendimento aos finais de semana e não somos 24 horas.</p>
+        <p class="foot-note">Socorros fora do horário: consulte a disponibilidade.</p>
       </div>
       <div>
         <h3>Navegue</h3>

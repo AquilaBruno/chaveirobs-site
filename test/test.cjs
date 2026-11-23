@@ -45,20 +45,22 @@ t('mensagens automáticas decodificam corretamente', () => {
   Object.values(cfg.messages).forEach((m) => assert(msgs.includes(m), 'faltando: ' + m));
   msgs.forEach((m) => console.log('      • ' + m));
 });
-t('não há "24h/24 horas" sem negação, nem expressões proibidas', () => {
-  // A única menção permitida é a pergunta do FAQ ("atende 24 horas?"), sempre respondida com "Não".
-  const body = html.replace(/<script[\s\S]*?<\/script>|<style[\s\S]*?<\/style>|<svg[\s\S]*?<\/svg>/g, '').replace(/O Chaveiro BS atende 24 horas\?/g, '');
-  [/aberto 24/i, /atendimento 24/i, /plant[ãa]o/i, /noturn/i, /qualquer hora/i, /24\s*h/i].forEach((re) => {
-    for (const m of body.matchAll(new RegExp(re.source, 'gi'))) {
-      const ctx = body.slice(Math.max(0, m.index - 60), m.index + 40);
-      assert(/n[ãa]o\s+(somos|atendemos|realizamos)|nosso atendimento/i.test(ctx) && !/atendimento 24|aberto 24|plant|noturn|qualquer hora/i.test(m[0]), 'menção suspeita: ' + ctx);
-    }
-  });
+t('não há menção a 24 horas, plantão, noturno nem "qualquer hora" no site', () => {
+  const body = html.replace(/<script[\s\S]*?<\/script>|<style[\s\S]*?<\/style>|<svg[\s\S]*?<\/svg>/g, '');
+  [/24\s*h/i, /24\/7/i, /plant[ãa]o/i, /noturn/i, /qualquer hora/i, /a qualquer momento/i, /n[ãa]o atendemos/i, /n[ãa]o somos/i].forEach((re) => assert(!re.test(body), 'menção indevida: ' + re));
+  assert(!/24/.test(JSON.stringify(cfg.messages)) && !/24/.test(cfg.seo.description));
   const ldAll = JSON.parse(html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)[1]);
-  const lock = ldAll.find((x) => x['@type'] === 'Locksmith');
-  assert(!/24/.test(JSON.stringify(lock).replace(/\+5511983711957/, '')), '24 no JSON-LD Locksmith');
-  assert(!/24\s*h|24\/7|always/i.test(JSON.stringify(lock)), 'marcação 24h no JSON-LD');
-  assert(!/24/.test(html.match(/<meta name="description" content="([^"]*)"/)[1]), '24 na meta description');
+  assert(!/24\s*h|24\/7|always/i.test(JSON.stringify(ldAll)), 'marcação 24h no JSON-LD');
+});
+t('socorro fora do horário é apresentado como "consulte a disponibilidade"', () => {
+  assert(html.includes('Socorros fora do horário comercial dependem de disponibilidade'));
+  assert(html.includes('Vocês fazem socorro fora do horário comercial?'));
+});
+t('novos serviços presentes', () => ['Cópia de controle de portão automático', 'Troca de bateria de controles', 'Troca de bateria de relógio', 'Ajuste de pulseiras de relógio', 'Instalação de fechadura digital', 'Serviços envolvendo miolos'].forEach((x) => assert(html.includes(x), x)));
+t('cada card de serviço tem botão com mensagem própria', () => {
+  const msgs = cfg.services.map((s) => cfg.messages[s.id]);
+  msgs.forEach((m) => assert(m, 'serviço sem mensagem'));
+  msgs.forEach((m) => assert(html.includes('text=' + encodeURIComponent(m)), m));
 });
 t('sábado e domingo aparecem como fechado', () => {
   assert(/<tr class="closed" data-weekday="6"><th scope="row">Sábado<\/th><td>Fechado/.test(html));
