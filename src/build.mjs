@@ -47,6 +47,7 @@ const paths = {
 };
 const sprite = `<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
 ${Object.entries(paths).map(([k, v]) => `<symbol id="i-${k}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">${v}</symbol>`).join('\n')}
+<symbol id="i-ig" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r=".6" fill="currentColor"/></symbol>
 <symbol id="i-wa" viewBox="0 0 24 24"><path d="M12 3a9 9 0 0 0-7.7 13.6L3 21l4.5-1.2A9 9 0 1 0 12 3z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path fill="currentColor" d="M16.3 14.2c-.2-.1-1.3-.6-1.5-.7-.2-.1-.4-.1-.5.1l-.7.9c-.1.1-.3.2-.5.1-.8-.4-1.6-.8-2.3-1.6-.5-.5-.9-1.1-1.1-1.5-.1-.2 0-.3.1-.4l.4-.5.2-.4v-.4l-.7-1.6c-.2-.4-.4-.4-.5-.4h-.4c-.2 0-.4.1-.6.3-.2.2-.8.8-.8 1.9s.8 2.2.9 2.3c.1.2 1.6 2.5 3.9 3.5 1.4.6 2 .6 2.7.5.4-.1 1.3-.5 1.5-1.1.2-.5.2-1 .1-1.1l-.5-.2z"/></symbol>
 </defs></svg>`;
 const icon = (n, cls = '') => `<svg class="icon ${cls}" aria-hidden="true" focusable="false"><use href="#i-${n}"/></svg>`;
@@ -105,6 +106,8 @@ const hoursRows = cfg.hours.map((h) => h.open
 const reviewsSection = cfg.reviews.length ? `<section id="avaliacoes" class="bg-soft"><div class="container">${sectionHead('Avaliações', 'O que dizem nossos clientes', '', true)}<div class="cards">${cfg.reviews.map((r) => `<blockquote class="quote reveal"><p>${esc(r.text)}</p><cite>${esc(r.author)}</cite></blockquote>`).join('')}</div></div></section>` : '';
 
 const socials = Object.entries(cfg.social).filter(([, v]) => v);
+const igHandle = cfg.social.instagram ? '@' + cfg.social.instagram.replace(/\/$/, '').split('/').pop().split('?')[0] : '';
+const igBtn = (cls = '') => cfg.social.instagram ? `<a class="btn btn-ghost ${cls}" href="${esc(cfg.social.instagram)}" target="_blank" rel="noopener">${icon('ig')}<span>Siga ${esc(igHandle)} no Instagram</span></a>` : '';
 const socialNames = { instagram: 'Instagram', facebook: 'Facebook', googleBusiness: 'Google Meu Negócio' };
 
 // ---------- JSON-LD (somente dados reais, sem 24h) ----------
@@ -275,7 +278,7 @@ ${reviewsSection}
   <div class="container reveal">
     <h2>Precisando de um chaveiro? Fale com o Chaveiro BS!</h2>
     <p>Entre em contato pelo WhatsApp, explique o que precisa e consulte a disponibilidade do atendimento.</p>
-    ${waBtn('CHAMAR NO WHATSAPP', cfg.messages.final, 'btn-lg')}
+    <div class="final-actions">${waBtn('CHAMAR NO WHATSAPP', cfg.messages.final, 'btn-lg')}${igBtn('btn-lg')}</div>${cfg.social.instagram ? `<p class="final-ig">Acompanhe novidades e trabalhos do Chaveiro BS no Instagram.</p>` : ''}
   </div>
 </section>
 </main>
@@ -296,7 +299,7 @@ ${reviewsSection}
       </div>
       <div>
         <h3>Navegue</h3>
-        <ul>${navLinks.map(([h, l]) => `<li><a href="${h}">${l}</a></li>`).join('')}${socials.map(([k, v]) => `<li><a href="${esc(v)}" target="_blank" rel="noopener">${socialNames[k] || k}</a></li>`).join('')}</ul>
+        <ul>${navLinks.map(([h, l]) => `<li><a href="${h}">${l}</a></li>`).join('')}${socials.map(([k, v]) => `<li><a href="${esc(v)}" target="_blank" rel="noopener">${socialNames[k] || k}${k === 'instagram' ? ' (' + esc(igHandle) + ')' : ''}</a></li>`).join('')}</ul>
       </div>
     </div>
     <p class="copy">© <span data-year>${new Date().getFullYear()}</span> ${esc(cfg.name)}. Todos os direitos reservados.</p>

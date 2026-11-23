@@ -161,6 +161,11 @@ section{padding:72px 0}
 .final{background:linear-gradient(135deg,var(--navy),var(--navy-3));color:#fff;text-align:center}
 .final h2{font-size:clamp(1.8rem,5vw,2.7rem);max-width:760px;margin:0 auto}
 .final p{margin:1rem auto 28px;max-width:600px;color:rgba(255,255,255,.88);font-size:1.1rem}
+.final-actions{display:flex;flex-direction:column;gap:12px;align-items:center;justify-content:center}
+@media(min-width:720px){.final-actions{flex-direction:row}}
+.final-actions .btn{width:100%;max-width:420px}
+@media(min-width:720px){.final-actions .btn{width:auto}}
+.final .final-ig{margin:20px auto 0;font-size:.97rem;color:rgba(255,255,255,.75)}
 
 /* Footer */
 .site-footer{background:#07111f;color:rgba(255,255,255,.78);padding:56px 0 100px;font-size:.97rem}

@@ -97,4 +97,14 @@ t('nenhuma imagem/script externo (sem bibliotecas desnecessárias)', () => {
   assert.deepStrictEqual(ext, []);
 });
 
+t('Instagram: link limpo no site, rodapé e Schema.org (sameAs)', () => {
+  const ig = 'https://www.instagram.com/chaveirobs';
+  assert.strictEqual(cfg.social.instagram, ig);
+  assert(!html.includes('dmpr='), 'parâmetro de rastreio no link');
+  assert((html.match(new RegExp('href="' + ig + '"', 'g')) || []).length >= 2, 'link do Instagram deve aparecer na chamada final e no rodapé');
+  assert(/rel="noopener"/.test(html.match(new RegExp('<a[^>]+' + ig + '[^>]*>'))[0]));
+  const l = JSON.parse(html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)[1]).find((x) => x['@type'] === 'Locksmith');
+  assert(l.sameAs.includes(ig));
+});
+
 console.log(`\n${passed} testes passaram.`);
